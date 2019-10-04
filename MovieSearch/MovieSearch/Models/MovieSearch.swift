@@ -8,18 +8,21 @@
 
 import Foundation
 
+// Declare a struct TopLevelDictionary and conform to Decodable
 struct TopLevelDict: Decodable {
-    let results: [MovieResults]
+    // defining results as an array of MovieResults
+    let results: [MovieResultsDict]
 }
-
-struct MovieResults: Decodable {
+// Declare a struct MovieResults and also conform that to Decodable.. This is the array listed above
+struct MovieResultsDict: Decodable {
+    // made an enum CodingKeys to allow me to use different (simpler) variables when referensing the API code
     enum CodingKeys: String, CodingKey {
         case title
         case rating = "vote_average"
         case overview
         case poster = "poster_path"
     }
-    
+    // Declare the information in the array of MovieResults that we want to use and defining their type.
     let title: String
     let rating: Double
     let overview: String
